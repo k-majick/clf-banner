@@ -1,0 +1,43 @@
+// @import "./node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// @import "./node_modules/normalize.css/normalize.css";
+@import "./variables.scss";
+@import "./mixins.scss";
+
+body {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+html {
+  position: relative;
+  height: 100%;
+  background: $color-silver-lite;
+  color: $color-black;
+  font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  letter-spacing: normal;
+  margin: 0;
+}
+
+a,
+a:link {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    opacity: 1;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+#myCanvas {
+  background: $color-white;
+}

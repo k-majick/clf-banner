@@ -1,0 +1,53 @@
+/* grid */
+@mixin mk-container($gutter: $grid-gutter-width) {
+  @include mobile {
+    width: 100%;
+  }
+  @include tablet {
+    width: 100%;
+  }
+  @include desktop {
+    width: 1170px;
+  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @include clearfix;
+}
+/* media */
+@mixin oldmobile {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 992px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 993px) {
+    @content;
+  }
+}
+/* bem */
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+@mixin trans {
+  transition: all 0.3s;
+}
