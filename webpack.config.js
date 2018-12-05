@@ -4,18 +4,20 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const myPath = 'dist/';
 
 module.exports = {
   entry: {
     main: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, myPath),
     publicPath: '/',
-    filename: '[name].min.js'
+    filename: './assets/[name].min.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, myPath),
     compress: true,
     port: 9999
   },
@@ -44,10 +46,14 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: [
-          'url-loader?limit=10000',
-          'img-loader'
-        ]
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: "[name].[ext]",
+            publicPath: './assets/gfx/',
+            outputPath: './assets/gfx/'
+          }
+        }
       },
       {
         test: /\.(html)$/,
@@ -79,7 +85,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin('dist', {}),
     new MiniCssExtractPlugin({
-      filename: '[name].min.css'
+      filename: './assets/[name].min.css'
     }),
     new HtmlWebpackPlugin({
       inject: false,
