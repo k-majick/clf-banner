@@ -14,7 +14,7 @@ body,
 html {
   position: relative;
   height: 100%;
-  background: $color-silver-lite;
+  background: $color-black;
   color: $color-black;
   font-family: 'Exo 2', Helvetica, Arial, sans-serif;
   font-size: 100%;
@@ -38,39 +38,9 @@ a:link {
   }
 }
 
-#myCanvas {
-  background: $color-white;
+#container {
+  background: lighten($color-black, 10%);
 }
-
-.container {
-  position: relative;
-
-  svg {
-    display: none;
-  }
-
-  #myCircle {
-    position: absolute;
-    left: 30px;
-  }
-
-  #myPoly {
-    position: absolute;
-    right: 60px;
-  }
-
-
-  #box1 {
-    position: absolute;
-    background: red;
-    width: 150px;
-    height: 150px;
-  }
-
-  #box2 {
-    position: absolute;
-    background: blue;
-    width: 50px;
-    height: 50px;
-  }
+canvas {
+  background: $color-white;
 }
